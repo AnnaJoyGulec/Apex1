@@ -1,32 +1,35 @@
 public class Study {
     public static void main() {
-        String kelime = 'merhaba'; // İşlem yapılacak kelime
-        Integer harfSayisiAzalmaMiktari = 2; // Azaltılacak harf sayısı
+        // Müşteri seçimleri
+        Boolean hamburgerSecimi = true; // true ise hamburger seçildi
+        Boolean patatesAlmaSecimi = false; // true ise patates alınmadı
+        Boolean icecekBoyutuBuyuk = true; // true ise içecek büyük boy seçildi
 
-        String azalmisKelime = sonHarfleriAzalt(kelime, harfSayisiAzalmaMiktari);
-        System.debug('Azaltılmış Kelime: ' + azalmisKelime);
-    }
+        // İndirim ve avantaj hesaplaması
+        Double fiyat = 10.0; // Hamburger fiyatı
+        Double indirimOrani = 0.0; // İndirim oranı
 
-    public static String sonHarfleriAzalt(String kelime, Integer azalmaMiktari) {
-        if (kelime != null && azalmaMiktari > 0) {
-            Integer kelimeUzunlugu = kelime.length();
-            
-            // Azaltma miktarı kelimenin uzunluğundan büyükse, kelimenin tamamını boşalt
-            if (azalmaMiktari >= kelimeUzunlugu) {
-                return '';
-            }
-
-            // Son harfleri azaltma
-            String azalmisKelime = '';
-            for (Integer i = 0; i < kelimeUzunlugu - azalmaMiktari; i++) {
-                azalmisKelime += kelime.substring(i, i + 1);
-            }
-
-            return azalmisKelime;
-        } else {
-            // Geçersiz giriş durumunda doğrudan kelimeyi geri döndür
-            return kelime;
+        // Hamburger seçimi
+        if (hamburgerSecimi) {
+            indirimOrani += 0.2; // Hamburger seçenlere %20 indirim
         }
+
+        // Patates alma seçimi
+        if (!patatesAlmaSecimi) {
+            indirimOrani += 0.05; // Patates almayanlara %5 indirim
+        }
+
+        // İçecek boyutu seçimi
+        if (icecekBoyutuBuyuk) {
+            System.debug('Patates Bedava!'); // Patates bedava
+        }
+
+        // İndirim uygulama
+        Double indirimMiktari = fiyat * indirimOrani;
+        Double odemeMiktari = fiyat - indirimMiktari;
+
+        // Sonuçları gösterme
+        System.debug('İndirimli Fiyat: ' + odemeMiktari);
     }
 }
 
